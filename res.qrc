@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pics/cellBackground.png</file>
+        <file>pics/goldCoin1.png</file>
+        <file>pics/goldCoin2.png</file>
+        <file>pics/goldCoin3.png</file>
+        <file>pics/silverCoin1.png</file>
+        <file>pics/silverCoin2.png</file>
+        <file>pics/silverCoin3.png</file>
+        <file>pics/background.jpg</file>
+        <file>pics/levelIcon.png</file>
+        <file>pics/startIcon.png</file>
+        <file>pics/title.png</file>
+        <file>pics/backBtn.png</file>
+        <file>pics/backBtn2.png</file>
+    </qresource>
+</RCC>
