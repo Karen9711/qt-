@@ -1,5 +1,5 @@
 ﻿#include "playscene.h"
-
+#include"dataconfig.h"
 PlayScene::PlayScene(int level)
 {
     //保留本官关卡
@@ -43,17 +43,50 @@ PlayScene::PlayScene(int level)
     label->setText(levelStr);
     label->setGeometry(QRect(30,this->height()-50,160,50));
 
+    //初始化当前游戏数组
+    DataConfig conf;
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+            gameArray[i][j] =  conf.mData[m_level][i][j];
+        }
+    }
+
     //创建金币的背景图片
     for(int i=0;i<4;i++)
     {
         for(int j=0;j<4;j++)
         {
-            //QLabel 显示图片
+            //QLabel 显示背景图片
             QLabel *cell = new QLabel(this);
             cell->setGeometry(0,0,75,75);
             cell->setPixmap(QPixmap(":/pics/cellBackground.png"));
             cell->move((this->width()-cell->width()*4)/2+j*77,this->height()*0.3+i*77);
+
+            //显示初始页面得金币 或银币
+            QString coinName;
+            if(gameArray[i][j]==0){
+                //为0 -- 显示银币
+                coinName = ":/pics/coin006.png";
+            }
+            else{
+                //为1 -- 显示金币
+                coinName = ":/pics/coin001.png";
+            }
+            MyCoin *coin = new MyCoin(coinName);
+            coin->posX = i;
+            coin->posY = j;
+            coin->flag = gameArray[i][j];
+            coin->setParent(this);
+            coin->move((this->width()-cell->width()*4)/2+j*77,this->height()*0.3+i*77);
+            connect(coin,&QPushButton::clicked,this,[=](){
+                coin->changeFlag();
+                gameArray[i][j] = gameArray[i][j]==1 ? 0 : 1;//同步二维数组得数据
+
+            });
         }
+
     }
 }
 void PlayScene::paintEvent(QPaintEvent *event)
@@ -66,6 +99,7 @@ void PlayScene::paintEvent(QPaintEvent *event)
     //绘制标题
     pix.load(":/pics/title.png");
     painter.drawPixmap(0,0,pix);
-
-
 }
+
+
+

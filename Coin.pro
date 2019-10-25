@@ -17,15 +17,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     chooselevelscene.cpp \
+    dataconfig.cpp \
     main.cpp \
     mainwindow.cpp \
     mybutton.cpp \
+    mycoin.cpp \
     playscene.cpp
 
 HEADERS += \
     chooselevelscene.h \
+    dataconfig.h \
     mainwindow.h \
     mybutton.h \
+    mycoin.h \
     playscene.h
 
 FORMS += \
