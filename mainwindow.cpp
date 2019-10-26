@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(chooseLevelScene,&ChooseLevelScene::chooseSceneBack,this,[=](){
         //延时返回
         chooseLevelScene->hide();
+        this->setGeometry(chooseLevelScene->geometry());
         this->show();
     });
     //点击开始-》退出 退出游戏
@@ -49,6 +50,8 @@ MainWindow::MainWindow(QWidget *parent)
         QTimer::singleShot(350,this,[=](){
            //将自身窗口隐藏
             this->hide();
+            //设置选择关卡窗口的位置
+            chooseLevelScene->setGeometry(this->geometry());
             //显示选择关卡窗口
             chooseLevelScene->show();
         });

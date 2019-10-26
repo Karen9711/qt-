@@ -47,8 +47,12 @@ ChooseLevelScene::ChooseLevelScene(QWidget *parent) : QMainWindow(parent)
             //传入游戏的等级
             playScene = new PlayScene(i);
             this->hide();
+            playScene->setGeometry(this->geometry());
             playScene->show();
             connect(playScene,&PlayScene::playSceneBack,[=](){
+//                设置选择场景关卡的位置
+
+                this->setGeometry(playScene->geometry());
                 playScene->close();
                 delete playScene;
                 playScene = NULL;
