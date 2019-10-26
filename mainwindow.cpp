@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include"mybutton.h"
 #include<QTimer>
+#include<QSound>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -31,11 +32,16 @@ MainWindow::MainWindow(QWidget *parent)
     startBtn->setParent(this);
     //将开始按钮放置到主界面中
     startBtn->move(this->width()*0.5-startBtn->width()*0.5,this->height()*0.7);
+    //创建音效
+//    QSound *sound = new QSound(":/....",this)
     //制作点击按钮时的弹跳效果
     connect(startBtn,&QPushButton::clicked,this,[=](){
         startBtn->zoomDown();
         startBtn->zoomUp();
 //        qDebug()<<"push button"<<endl; //test
+
+         //点击开始按钮 播放开始的音效
+//        sound->play();
 
         //进入第二个场景
 

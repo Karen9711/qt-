@@ -12,6 +12,7 @@ public:
     int posX;//记录位置
     int posY;
     bool flag;//记录正反
+    bool isWin=false;//记录是否胜利 -- 用于禁用按钮
     void changeFlag();//反转金币
     QTimer *timer1;
     QTimer *timer2;
@@ -23,6 +24,7 @@ public:
     void mousePressEvent(QMouseEvent *e);
 
 private:
+
 
 
 signals:

@@ -13,5 +13,6 @@
         <file>pics/coin004.png</file>
         <file>pics/coin005.png</file>
         <file>pics/coin006.png</file>
+        <file>pics/win.png</file>
     </qresource>
 </RCC>

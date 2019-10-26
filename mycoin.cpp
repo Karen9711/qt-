@@ -64,22 +64,25 @@ void MyCoin::changeFlag()
     if(this->flag)
     {
         isAnimation = true;
+         flag = false;
         timer1->start(30);
-        flag = !flag;
+
     }
     else
     {
         isAnimation = true;
+        flag = true;
         timer2->start(30);
-        flag = !flag;
+
     }
 }
 
 void MyCoin::mousePressEvent(QMouseEvent *e)
 {
-    if(this->isAnimation)
+    if(this->isAnimation || this->isWin)
     {
         //正在做动画
+        //或已经胜利
         return;
     }
     //否则交给父类做默认处理
